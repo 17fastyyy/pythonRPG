@@ -3,22 +3,19 @@ from colorama import Fore, Style
 
 
 class Character:
-    def __init__(self, name, max_hp, hp, atk, df, df_on, xp, lvl, hability):
+    def __init__(
+        self, name, max_hp, hp, atk, df, df_on, xp, lvl, hability, crit_chance
+    ):
         self.name = name
-        self.max_hp = max_hp
-        self.hp = hp
+        self.max_hp = float(max_hp)
+        self.hp = float(hp)
         self.atk = atk
         self.df = df
         self.df_on = df_on
         self.xp = xp
         self.lvl = lvl
         self.hability = hability
-
-    def show_stats(self):
-        print(
-            f"Name: {self.name} \nMax Health: {self.max_hp} \nHealth: {self.hp} \nAttack: {self.atk} \nDefense: {self.df} \nHability: {self.hability}"
-        )
-        return
+        self.crit_chance = crit_chance
 
     def attack(self, enemy):
         print("You attack!")
@@ -32,7 +29,9 @@ class Character:
         )
 
     def use_defense(self):
-        print(f"You defended yourself, you take {100 / self.df}% less damage!")
+        print(
+            f"You defend yourself, you take {round(100 / self.df, 1)}% less damage on the next attack!"
+        )
         self.df_on = True
 
 
@@ -42,14 +41,17 @@ class Villager(Character):
         name,
         max_hp=20,
         hp=20,
-        atk=2,
+        atk=5,
         df=2,
         df_on=False,
         xp=0,
         lvl=1,
         hability="Bonk",
+        crit_chance=2,
     ):
-        super().__init__(name, max_hp, hp, atk, df, df_on, xp, lvl, hability)
+        super().__init__(
+            name, max_hp, hp, atk, df, df_on, xp, lvl, hability, crit_chance
+        )
 
 
 class Assasin(Character):
@@ -58,14 +60,17 @@ class Assasin(Character):
         name,
         max_hp=15,
         hp=15,
-        atk=5,
+        atk=8,
         df=3,
         df_on=False,
         xp=0,
         lvl=1,
         hability="Blade Storm",
+        crit_chance=2,
     ):
-        super().__init__(name, max_hp, hp, atk, df, df_on, xp, lvl, hability)
+        super().__init__(
+            name, max_hp, hp, atk, df, df_on, xp, lvl, hability, crit_chance
+        )
 
 
 class Mage(Character):
@@ -74,11 +79,14 @@ class Mage(Character):
         name,
         max_hp=25,
         hp=25,
-        atk=3,
+        atk=6,
         df=4,
         df_on=False,
         xp=0,
         lvl=1,
         hability="Lightning Blizzard",
+        crit_chance=2,
     ):
-        super().__init__(name, max_hp, hp, atk, df, df_on, xp, lvl, hability)
+        super().__init__(
+            name, max_hp, hp, atk, df, df_on, xp, lvl, hability, crit_chance
+        )

@@ -38,6 +38,8 @@ if __name__ == "__main__":
         sleep(2)
         clear_cmd()
         start_combat(player, slime)
+        start_combat(player, slime)
+        start_combat(player, slime)
 
         # player.show_stats()
 
